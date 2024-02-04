@@ -50,6 +50,13 @@
             <div class="border-bottom border-primary">
               <input type="mail" class="w-100 border-0 mail_address" name="mail_address">
             </div>
+            @if ($errors->has('mail_address'))
+            <div id="alert">
+              <ol>
+                <li>{{ $errors->first('mail_address') }}</li>
+              </ol>
+            </div>
+            @endif
           </div>
         </div>
         <div class="mt-3">
@@ -144,6 +151,13 @@
           </select>
           <label style="font-size:13px">月</label>
         </div>
+        @if ($errors->has('birth_day'))
+        <div id="alert">
+          <ol>
+            <li>{{ $errors->first('birth_day') }}</li>
+          </ol>
+        </div>
+        @endif
         <div class="mt-3">
           <label class="d-block m-0" style="font-size:13px">役職</label>
           <input type="radio" name="role" class="admin_role role" value="1">
