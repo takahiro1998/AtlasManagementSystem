@@ -92,13 +92,12 @@ class RegisterController extends Controller
             // date関数にて取得した生年月日を格納する
             $birth_day = date('Y-m-d', strtotime($data));
 
-            // dd($birth_day);
-
             // $this->merge([
             //     'birth_day'=>$birth_day,
             // ]);
 
             $subjects = $request->subject;
+            // dd($subjects);
 
 
             // バリデーションに引っかかる場合
@@ -114,10 +113,11 @@ class RegisterController extends Controller
                 'role' => $request->role,
                 'password' => bcrypt($request->password)
             ]);
+            dd($user_get);
             // モデルが見つからない場合
             $user = User::findOrFail($user_get->id);
             $user->subjects()->attach($subjects);
-                        DB::commit();
+            DB::commit();
             return view('auth.login.login');
         }catch(\Exception $e){
             // ロールバック（破棄）
