@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use App\Http\Requests\RegisterFormRequest;
 use DB;
 
 use App\Models\Users\Subjects;
@@ -57,28 +58,8 @@ class RegisterController extends Controller
         return view('auth.register.register', compact('subjects'));
     }
 
-    public function registerPost(Request $request)
+    public function registerPost(RegisterFormRequest $request)
     {
-        // $validator=Validator::make($request->all(),[
-        //         'over_name'=>'required|string|max:10',
-        //         'under_name'=>'required|string|max:10',
-        //         'over_name_kana'=>'required|string|max:30|regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u',
-        //         'under_name_kana'=>'required|string|max:30|regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u',
-        //         'mail_address'=>'required|email|unique:users|max:100',
-        //         'sex'=>'required|regex:/^[1|2|3]+$/u',
-        //         'old_year'=>'required',
-        //         'old_month'=>'required',
-        //         'old_day'=>'required',
-        //         'birth_day'=>'required|date|after:1999-12-31|before:tomorrow',
-        //         'role'=>'required|regex:/^[1|2|3|4]+$/u',
-        //         'password'=>'required|min:8|max:30|confirmed',
-        //         'password_confirmation' => 'required|min:8|max:30'
-        //     ]);
-        //     if($validator->fails()){
-        //         return redirect()->back()
-        //         ->withErrors($validator)
-        //         ->withInput();
-        //     }
         // トランザクション処理・・・誤って一部分のみ登録を防ぐ処理
         DB::beginTransaction();
         try{
@@ -92,16 +73,9 @@ class RegisterController extends Controller
             // date関数にて取得した生年月日を格納する
             $birth_day = date('Y-m-d', strtotime($data));
 
-            // $this->merge([
-            //     'birth_day'=>$birth_day,
-            // ]);
-
             $subjects = $request->subject;
             // dd($subjects);
 
-
-            // バリデーションに引っかかる場合
-          // それ以外
             $user_get = User::create([
                 'over_name' => $request->over_name,
                 'under_name' => $request->under_name,
@@ -113,7 +87,7 @@ class RegisterController extends Controller
                 'role' => $request->role,
                 'password' => bcrypt($request->password)
             ]);
-            dd($user_get);
+
             // モデルが見つからない場合
             $user = User::findOrFail($user_get->id);
             $user->subjects()->attach($subjects);
