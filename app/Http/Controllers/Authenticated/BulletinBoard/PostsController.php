@@ -12,13 +12,16 @@ use App\Models\Posts\Like;
 use App\Models\Users\User;
 use App\Http\Requests\BulletinBoard\PostFormRequest;
 use App\Http\Requests\BulletinBoard\PostEditFormRequest;
+use App\Http\Requests\BulletinBoard\PostCommentRequest;
 use Auth;
 
 class PostsController extends Controller
 {
     public function show(Request $request){
+        // 中間テーブルpostsテーブルの情報を取得
         $posts = Post::with('user', 'postComments')->get();
         $categories = MainCategory::get();
+        // インスタンス化
         $like = new Like;
         $post_comment = new Post;
         if(!empty($request->keyword)){
@@ -75,7 +78,7 @@ class PostsController extends Controller
         return redirect()->route('post.input');
     }
 
-    public function commentCreate(Request $request){
+    public function commentCreate(PostCommentRequest $request){
         PostComment::create([
             'post_id' => $request->post_id,
             'user_id' => Auth::id(),
