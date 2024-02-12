@@ -1,4 +1,5 @@
 $(function () {
+  // メインカテゴリセレクト画面
   $('.main_categories').click(function () {
     var category_id = $(this).attr('category_id');
     $('.category_num' + category_id).slideToggle();
@@ -48,17 +49,25 @@ $(function () {
     });
   });
 
-  $('.edit-modal-open').on('click',function(){
+  // 投稿編集モーダル
+  // class="edit-modal-open"が押されたら
+  $('.edit-modal-open').on('click', function () {
+    // モーダルの中身(class= "js-modal")の表示
     $('.js-modal').fadeIn();
+    // 押されたボタンから投稿タイトルを格納
     var post_title = $(this).attr('post_title');
+    // 押されたボタンから投稿内容を格納
     var post_body = $(this).attr('post_body');
+    // 押されたボタンから投稿のidを格納
     var post_id = $(this).attr('post_id');
+    // 取得した内容を渡す
     $('.modal-inner-title input').val(post_title);
     $('.modal-inner-body textarea').text(post_body);
     $('.edit-modal-hidden').val(post_id);
     return false;
   });
   $('.js-modal-close').on('click', function () {
+    // モーダルの中身(class= "js-modal")を非表示
     $('.js-modal').fadeOut();
     return false;
   });

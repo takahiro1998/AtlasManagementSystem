@@ -2,6 +2,7 @@
 
 namespace App\Models\Users;
 
+
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Users\User;
@@ -16,6 +17,7 @@ class Subjects extends Model
     ];
 
     public function users(){
-        return $this->belongsToMany('App\Models\Users\User','subject_users','subject_id','user_id')->withPivot('');// リレーションの定義
+        // 必要に応じてwithPivotなど使い中間テーブルの値を取得
+        return $this->belongsToMany('App\Models\Users\User','subject_users','subject_id','user_id');// リレーションの定義
     }
 }
