@@ -13,10 +13,13 @@ use App\Models\Users\User;
 use App\Http\Requests\BulletinBoard\PostFormRequest;
 use App\Http\Requests\BulletinBoard\PostEditFormRequest;
 use App\Http\Requests\BulletinBoard\PostCommentRequest;
+use App\Http\Requests\BulletinBoard\MainCategoryRequest;
+use App\Http\Requests\BulletinBoard\SubCategoryRequest;
 use Auth;
 
 class PostsController extends Controller
 {
+    // 投稿一覧画面の表示
     public function show(Request $request){
         // 中間テーブルpostsテーブルの情報を取得
         $posts = Post::with('user', 'postComments')->get();
@@ -47,11 +50,14 @@ class PostsController extends Controller
         return view('authenticated.bulletinboard.post_detail', compact('post'));
     }
 
+    // 投稿画面の表示
     public function postInput(){
         $main_categories = MainCategory::get();
+        // dd($main_categories);
         return view('authenticated.bulletinboard.post_create', compact('main_categories'));
     }
 
+    // 投稿ボタン押下時
     public function postCreate(PostFormRequest $request){
         $post = Post::create([
             'user_id' => Auth::id(),
@@ -69,15 +75,27 @@ class PostsController extends Controller
         return redirect()->route('post.detail', ['id' => $request->post_id]);
     }
 
+    // 投稿削除ボタン押下時
     public function postDelete($id){
         Post::findOrFail($id)->delete();
         return redirect()->route('post.show');
     }
-    public function mainCategoryCreate(Request $request){
+    // メインカテゴリ・サブカテゴリ追加押下時
+    public function mainCategoryCreate(MainCategoryRequest $request){
         MainCategory::create(['main_category' => $request->main_category_name]);
         return redirect()->route('post.input');
     }
 
+    public function subCategoryCreate(SubCategoryRequest $request){
+        $main_category_id=MainCategory::where('main_category',$request->main_category_id)->first();
+        SubCategory::create([
+                'main_category_id'=>$main_category_id->id,
+                'sub_category'=>$request->sub_category_name,
+        ]);
+        return redirect()->route('post.input');
+    }
+
+    // コメントボタン押下時
     public function commentCreate(PostCommentRequest $request){
         PostComment::create([
             'post_id' => $request->post_id,

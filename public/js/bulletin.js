@@ -1,6 +1,8 @@
 $(function () {
   // メインカテゴリセレクト画面
+  // メインカテゴリをクリックしたなら
   $('.main_categories').click(function () {
+    // 押されたボタンよりcategory_idを格納
     var category_id = $(this).attr('category_id');
     $('.category_num' + category_id).slideToggle();
   });
