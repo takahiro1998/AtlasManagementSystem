@@ -18,7 +18,7 @@ class SubCategoryRequest extends FormRequest
 
     public function getValidatorInstance()
     {
-        $main_category=$this->input('main_category_name');
+        $main_category=$this->input('main_category_id');
         $sub_category=$this->input('sub_category_name');
 
         $this->merge([
@@ -37,7 +37,7 @@ class SubCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'main_category'=>'required|unique:main_categories',
+            'main_category'=>'required|exists:main_categories',
             'sub_category'=>'required|max:100|string|unique:sub_categories'
             //
         ];

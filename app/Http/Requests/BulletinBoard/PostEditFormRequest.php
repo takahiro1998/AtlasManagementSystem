@@ -24,6 +24,7 @@ class PostEditFormRequest extends FormRequest
     public function rules()
     {
         return [
+            'post_category_id'=>'required|exists:sub_categories',
             'post_title' => 'min:4|string|max:100',
             'post_body' => 'min:10|string|max:5000',
         ];
