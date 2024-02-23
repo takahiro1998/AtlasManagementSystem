@@ -6,6 +6,14 @@
       <div class="p-3">
         <div class="detail_inner_head">
           <div>
+            <span>{{ $post->sub_categories->id }}</span>
+            @if($errors->any())
+            <span class="error_message">
+              @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+            </span>
+            @endif
           </div>
           <!-- 自身の投稿の場合 -->
           @if($post->user_id==Auth::user()->id)

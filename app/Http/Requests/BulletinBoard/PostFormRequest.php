@@ -21,9 +21,23 @@ class PostFormRequest extends FormRequest
      *
      * @return array
      */
+
+
+    //  public function getValidatorInstance()
+    // {
+    //     $sub_category=$this->input('post_category_id1');
+
+    //     $this->merge([
+    //             'post_category_id1'=>$sub_category,
+    //         ]);
+
+    //     return parent::getValidatorInstance();
+    // }
+
     public function rules()
     {
         return [
+            // 'sub_category'=>'required',
             'post_title' => 'min:4|max:50',
             'post_body' => 'min:10|max:500',
         ];

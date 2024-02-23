@@ -46,7 +46,7 @@ class PostsController extends Controller
     }
 
     public function postDetail($post_id){
-        $post = Post::with('user', 'postComments')->findOrFail($post_id);
+        $post = Post::with('user', 'postComments','subCategories')->findOrFail($post_id);
         return view('authenticated.bulletinboard.post_detail', compact('post'));
     }
 
@@ -64,9 +64,14 @@ class PostsController extends Controller
             'post_title' => $request->post_title,
             'post' => $request->post_body
         ]);
+        $posts=new Post;
+        $sub_category=SubCategory::where('sub_category',$request->post_category_id)->first();
+        // dd($sub_category);
+        $posts->sub_categories()->attach($sub_category);
         return redirect()->route('post.show');
     }
 
+    // 投稿編集ボタン押下時
     public function postEdit(PostEditFormRequest $request){
         Post::where('id', $request->post_id)->update([
             'post_title' => $request->post_title,
