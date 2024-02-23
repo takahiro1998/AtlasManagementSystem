@@ -65,7 +65,8 @@ class PostsController extends Controller
             'post' => $request->post_body
         ]);
         $posts=new Post;
-        $sub_category=SubCategory::where('sub_category',$request->post_category_id)->first();
+        // $sub_category=SubCategory::where('sub_category',$request->post_category_id)->first();
+        $sub_category=$request->post_category_id;
         // dd($sub_category);
         $posts->sub_categories()->attach($sub_category);
         return redirect()->route('post.show');
