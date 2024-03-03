@@ -64,7 +64,7 @@ class PostsController extends Controller
             'post_title' => $request->post_title,
             'post' => $request->post_body
         ]);
-        $posts=Post::findOrFail(Auth::id());
+        $posts=Post::findOrFail($post->id);
         // $sub_category=SubCategory::where('sub_category',$request->post_category_id)->first();
         $sub_category=$request->post_category_id;
         $posts->subCategories()->attach($sub_category);
