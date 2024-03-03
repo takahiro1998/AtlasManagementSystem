@@ -6,6 +6,7 @@ use App\Models\Users\User;
 class CalendarView{
   private $carbon;
 
+  // 日付を取得
   function __construct($date){
     $this->carbon = new Carbon($date);
   }

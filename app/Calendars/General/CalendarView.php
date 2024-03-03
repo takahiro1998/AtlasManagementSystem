@@ -47,8 +47,10 @@ class CalendarView{
         }
         $html[] = $day->render();
 
+        // 予約している場合の表示方法
         if(in_array($day->everyDay(), $day->authReserveDay())){
           $reservePart = $day->authReserveDate($day->everyDay())->first()->setting_part;
+          // 予約した時間帯により表示変更
           if($reservePart == 1){
             $reservePart = "リモ1部";
           }else if($reservePart == 2){
