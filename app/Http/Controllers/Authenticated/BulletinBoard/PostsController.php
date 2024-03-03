@@ -64,11 +64,10 @@ class PostsController extends Controller
             'post_title' => $request->post_title,
             'post' => $request->post_body
         ]);
-        $posts=new Post;
+        $posts=Post::findOrFail(Auth::id());
         // $sub_category=SubCategory::where('sub_category',$request->post_category_id)->first();
         $sub_category=$request->post_category_id;
-        // dd($sub_category);
-        $posts->sub_categories()->attach($sub_category);
+        $posts->subCategories()->attach($sub_category);
         return redirect()->route('post.show');
     }
 

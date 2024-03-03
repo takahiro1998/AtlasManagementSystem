@@ -74,7 +74,7 @@ class RegisterController extends Controller
             $birth_day = date('Y-m-d', strtotime($data));
 
             $subjects = $request->subject;
-            // dd($subjects);
+            dd($subjects);
 
             $user_get = User::create([
                 'over_name' => $request->over_name,
@@ -90,6 +90,7 @@ class RegisterController extends Controller
 
             // モデルが見つからない場合
             $user = User::findOrFail($user_get->id);
+            // attachメソッドをつかい、モデルを結びつけている中間テーブルにレコードを挿入します。
             $user->subjects()->attach($subjects);
             DB::commit();
             return view('auth.login.login');
