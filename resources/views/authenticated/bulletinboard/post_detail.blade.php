@@ -6,7 +6,9 @@
       <div class="p-3">
         <div class="detail_inner_head">
           <div>
-            <span>{{ $post->sub_categories->id }}</span>
+            @foreach($post->subCategories as $subcategory)
+            <span>{{ $subcategory->sub_category }}</span>
+            @endforeach
             @if($errors->any())
             <span class="error_message">
               @foreach ($errors->all() as $error)
