@@ -42,4 +42,11 @@ class SubCategoryRequest extends FormRequest
             //
         ];
     }
+
+    public function messages(){
+        return [
+            'sub_category.required'=>'サブカテゴリは入力必須です',
+            'sub_category.unique'=>'すでに登録されています',
+        ];
+    }
 }
