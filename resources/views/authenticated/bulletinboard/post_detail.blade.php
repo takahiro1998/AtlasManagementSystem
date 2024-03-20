@@ -7,7 +7,7 @@
         <div class="detail_inner_head">
           <div>
             @foreach($post->subCategories as $subcategory)
-            <span>{{ $subcategory->sub_category }}</span>
+            <input type="submit" class="category_btn" value="{{ $subcategory->sub_category }}" form="postSearchRequest">
             @endforeach
             @if($errors->any())
             <span class="error_message">
