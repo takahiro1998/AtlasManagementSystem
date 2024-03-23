@@ -31,7 +31,8 @@ class PostsController extends Controller
             // タイトルもしくは投稿内容に入力されたワードがあるかチェック
             $posts = Post::with('user', 'postComments')
             ->where('post_title', 'like', '%'.$request->keyword.'%')
-            ->orWhere('post', 'like', '%'.$request->keyword.'%')->get();
+            ->orWhere('post', 'like', '%'.$request->keyword.'%')
+            ->get();
         }else if($request->category_word){  // 各カテゴリボタンを押したなら
             $sub_category = $request->category_word;
             // リレーション先のテーブルの条件で検索
