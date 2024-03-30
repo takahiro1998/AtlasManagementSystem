@@ -29,7 +29,8 @@ class PostsController extends Controller
         $post_comment = new Post;
         if(!empty($request->keyword)){  // もし検索欄に入力されているなら
             // タイトルもしくは投稿内容に入力されたワードがあるかチェック
-            $posts = Post::with('user', 'postComments')
+            $posts = Post::with('user', 'postComments'
+            )
             ->where('post_title', 'like', '%'.$request->keyword.'%')
             ->orWhere('post', 'like', '%'.$request->keyword.'%')
             ->get();

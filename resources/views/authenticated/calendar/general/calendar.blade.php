@@ -18,12 +18,12 @@
       <div class="modal js-open">
         <div class="modal__bg js-modal-close"></div>
         <div class="modal__content">
-          <form action="{{ ('deleteParts') }}" method="post">
+          <form action="{{ route('deleteParts') }}" method="post" form="reserveDelete">
             <div class="modal-inner-date">
-              <p>予約日：<input type="text" readonly></p>
+              <p>予約日：<input type="text" name="getData" form="reserveDelete" readonly></p>
             </div>
             <div class="modal-inner-time">
-              <p>時間：<input type="text" readonly></p>
+              <p>時間：<input type="text" name="getPart" form="reserveDelete" readonly></p>
             </div>
             <div>
               <p>上記の予約をキャンセルしてもよろしいですか？</p>
@@ -31,7 +31,7 @@
             <div class="w-50 m-auto edit-modal-btn d-flex">
               <a class="js-modal-close btn btn-primary d-block" href="">閉じる</a>
               <input type="hidden" class="edit-modal-hidden" name="post_id" value="">
-              <input type="submit" class="btn btn-danger d-inline-block" value="キャンセル">
+              <input type="submit" class="btn btn-danger d-inline-block" value="キャンセル" form="reserveDelete">
             </div>
             {{ csrf_field() }}
           </form>

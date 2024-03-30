@@ -47,4 +47,5 @@ class CalendarsController extends Controller
         }
         return redirect()->route('calendar.admin.setting', ['user_id' => Auth::id()]);
     }
+
 }
