@@ -42,7 +42,9 @@ class MainCategoryRequest extends FormRequest
 
      public function messages(){
         return [
-            'mail_category_name.required'  => '※メインカテゴリは入力必須です',
+            'main_category.required'  => 'メインカテゴリは入力必須です',
+            'main_category.unique'=>'すでに登録されています',
+            'main_category.max'=>'100文字以内で登録してください'
         ];
     }
 }
