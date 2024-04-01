@@ -25,20 +25,27 @@ class CalendarWeekDay{
 
   function dayPartCounts($ymd){
     $html = [];
+    // 指定した日付の部数「１」の予約状況(ReserveSetting)を格納
     $one_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '1')->first();
+    // 指定日付の部数「２」の予約状況
     $two_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '2')->first();
+    // 指定日付の部数「３」の予約状況
     $three_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '3')->first();
+
 
     // ここに予約人数を表示させる＆予約詳細画面へ遷移する機能を実装
     $html[] = '<div class="text-left">';
     if($one_part){
-      $html[] = '<p class="day_part m-0 pt-1">1部'.$one_part_count.'</p>';
+      // 指定日付の部数「１」に接続しているuserの数を表示する
+      $html[] = '<p class="day_part m-0 pt-1">1部'.$one_part->users()->count().'</p>';
     }
     if($two_part){
-      $html[] = '<p class="day_part m-0 pt-1">2部</p>';
+      // 指定日付の部数「２」に接続しているuserの数を表示
+      $html[] = '<p class="day_part m-0 pt-1">2部'.$two_part->users()->count().'</p>';
     }
     if($three_part){
-      $html[] = '<p class="day_part m-0 pt-1">3部</p>';
+      // 指定日付の部数「３」に接続しているuserの数を表示
+      $html[] = '<p class="day_part m-0 pt-1">3部'.$three_part->users()->count().'</p>';
     }
     $html[] = '</div>';
 
