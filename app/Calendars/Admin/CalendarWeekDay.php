@@ -29,9 +29,10 @@ class CalendarWeekDay{
     $two_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '2')->first();
     $three_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '3')->first();
 
+    // ここに予約人数を表示させる＆予約詳細画面へ遷移する機能を実装
     $html[] = '<div class="text-left">';
     if($one_part){
-      $html[] = '<p class="day_part m-0 pt-1">1部</p>';
+      $html[] = '<p class="day_part m-0 pt-1">1部'.$one_part_count.'</p>';
     }
     if($two_part){
       $html[] = '<p class="day_part m-0 pt-1">2部</p>';

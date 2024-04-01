@@ -34,6 +34,13 @@ class PostsController extends Controller
             ->where('post_title', 'like', '%'.$request->keyword.'%')
             ->orWhere('post', 'like', '%'.$request->keyword.'%')
             ->get();
+            $sub_categories=Subcategory::pluck('sub_category')->toArray();
+            if(in_array($request->keyword, $sub_categories)){
+                $sub_category=$request->keyword;
+                $posts = Post::whereHas('subCategories',function ($q) use ($sub_category) {
+                    $q->where('sub_category', '=', $sub_category);
+                })->get();
+            }
         }else if($request->category_word){  // 各カテゴリボタンを押したなら
             $sub_category = $request->category_word;
             // リレーション先のテーブルの条件で検索
