@@ -18,7 +18,7 @@
       <div class="modal js-open">
         <div class="modal__bg js-modal-close"></div>
         <div class="modal__content">
-          <form action="{{ route('deleteParts') }}" method="post" form="reserveDelete">
+          <form action="{{ route('deleteParts') }}" method="post" id="reserveDelete">
             <div class="modal-inner-date">
               <p>予約日：<input type="text" name="getData" form="reserveDelete" readonly></p>
             </div>

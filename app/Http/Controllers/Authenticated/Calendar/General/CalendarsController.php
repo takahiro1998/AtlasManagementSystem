@@ -40,15 +40,13 @@ class CalendarsController extends Controller
         try{
             $getPart = $request->getPart;
             $getDate = $request->getData;
-            dd($getData);
-            $reserveDays = array_filter(array_combine($getDate, $getPart));
-            foreach($reserveDays as $key => $value){
-                $reserve_settings = ReserveSettings::where('setting_reserve', $key)->where('setting_part', $value)->first();
+            // $reserveDays = array_filter(array_combine($getDate, $getPart));
+            // foreach($reserveDays as $key => $value){}
+            $reserve_settings = ReserveSettings::where('setting_reserve', $getDate)->where('setting_part', $getPart)->first();
                 // 予約できる人数を1人分増やす
-                $reserve_settings->increment('limit_users');
+            $reserve_settings->increment('limit_users');
                 // 予約情報を切り離す
-                $reserve_settings->users()->detach(Auth::id());
-            }
+            $reserve_settings->users()->detach(Auth::id());
             DB::commit();
         }catch(\Exception $e){
             DB::rollback();
