@@ -24,6 +24,7 @@ class CalendarsController extends Controller
             $getPart = $request->getPart;
             $getDate = $request->getData;
             $reserveDays = array_filter(array_combine($getDate, $getPart));
+            dd($reserveDays);
             foreach($reserveDays as $key => $value){
                 $reserve_settings = ReserveSettings::where('setting_reserve', $key)->where('setting_part', $value)->first();
                 $reserve_settings->decrement('limit_users');
@@ -38,15 +39,25 @@ class CalendarsController extends Controller
         public function delete(Request $request){
         DB::beginTransaction();
         try{
-            $getPart = $request->getPart;
+            if($request->getPart=="リモ1部"){
+                $getPart="1";
+            }else if($request->getPart=="リモ2部"){
+                $getPart="2";
+            }else if($request->getPart=="リモ3部"){
+                $getPart="3";
+            }
+            // $getPart = $request->getPart;
             $getDate = $request->getData;
+            $reserveDays=[$getDate=>$getPart];
+            // dd($reserveDays);
             // $reserveDays = array_filter(array_combine($getDate, $getPart));
-            // foreach($reserveDays as $key => $value){}
-            $reserve_settings = ReserveSettings::where('setting_reserve', $getDate)->where('setting_part', $getPart)->first();
+            foreach($reserveDays as $key => $value){
+                $reserve_settings = ReserveSettings::where('setting_reserve', $key)->where('setting_part', $value)->first();
                 // 予約できる人数を1人分増やす
-            $reserve_settings->increment('limit_users');
+                $reserve_settings->increment('limit_users');
                 // 予約情報を切り離す
-            $reserve_settings->users()->detach(Auth::id());
+                $reserve_settings->users()->detach(Auth::id());
+            }
             DB::commit();
         }catch(\Exception $e){
             DB::rollback();
