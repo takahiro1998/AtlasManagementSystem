@@ -37,15 +37,18 @@ class CalendarWeekDay{
     $html[] = '<div class="text-left">';
     if($one_part){
       // 指定日付の部数「１」に接続しているuserの数を表示する
-      $html[] = '<p class="day_part m-0 pt-1"><a href="{{ route("calendar.admin.detail") }}">1部</a>'.$one_part->users()->count().'</p>';
+      $route=route("calendar.admin.detail",['date'=>$ymd,'part'=>'1']);
+      $html[] = '<p class="day_part m-0 pt-1"><a href='.$route.'>1部</a>'.$one_part->users()->count().'</p>';
     }
     if($two_part){
       // 指定日付の部数「２」に接続しているuserの数を表示
-      $html[] = '<p class="day_part m-0 pt-1"><a href="{{ route("calendar.admin.detail") }}">2部</a>'.$two_part->users()->count().'</p>';
+      $route=route("calendar.admin.detail",['date'=>$ymd,'part'=>'2']);
+      $html[] = '<p class="day_part m-0 pt-1"><a href='.$route.'>2部</a>'.$two_part->users()->count().'</p>';
     }
     if($three_part){
       // 指定日付の部数「３」に接続しているuserの数を表示
-      $html[] = '<p class="day_part m-0 pt-1"><a href="{{ route("calendar.admin.detail") }}">3部</a>'.$three_part->users()->count().'</p>';
+      $route=route("calendar.admin.detail",['date'=>$ymd,'part'=>'3']);
+      $html[] = '<p class="day_part m-0 pt-1"><a href='.$route.'>3部</a>'.$three_part->users()->count().'</p>';
     }
     $html[] = '</div>';
 
