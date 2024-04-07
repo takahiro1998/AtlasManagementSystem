@@ -4,18 +4,18 @@
   <div class="w-50 mt-5">
     <div class="m-3 detail_container">
       <div class="p-3">
-        <div class="detail_inner_head">
-          <div>
-            @foreach($post->subCategories as $subcategory)
-            <input type="submit" class="category_btn" value="{{ $subcategory->sub_category }}" form="postSearchRequest">
-            @endforeach
-            @if($errors->any())
+        @if($errors->any())
             <span class="error_message">
               @foreach ($errors->all() as $error)
               <li>{{ $error }}</li>
               @endforeach
             </span>
             @endif
+        <div class="detail_inner_head">
+          <div>
+            @foreach($post->subCategories as $subcategory)
+            <input type="submit" class="category_btn" value="{{ $subcategory->sub_category }}" form="postSearchRequest">
+            @endforeach
           </div>
           <!-- 自身の投稿の場合 -->
           @if($post->user_id==Auth::user()->id)
@@ -56,10 +56,10 @@
   <div class="w-50 p-3">
     <div class="comment_container border m-5">
       <div class="comment_area p-3">
-        <p class="m-0">コメントする</p>
         @if($errors->first('comment'))
           <span class="error_message">{{ $errors->first('comment') }}</span>
         @endif
+        <p class="m-0">コメントする</p>
         <textarea class="w-100" name="comment" form="commentRequest"></textarea>
         <input type="hidden" name="post_id" form="commentRequest" value="{{ $post->id }}">
         <input type="submit" class="btn btn-primary" form="commentRequest" value="投稿">
