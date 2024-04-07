@@ -6,6 +6,13 @@
   padding: 0;
 }
 
+.icon1 {
+  display: flex;
+  top: 130px;
+  margin: 0 auto;
+  position: relative;
+}
+
 /* body */
 .all_content {
   background: #ECF1F6;
@@ -90,6 +97,37 @@ li {
   border: none;
 }
 
+/* スクール予約詳細 */
+.h-75 {
+  border-radius: 10px;
+}
+
+.border {
+  border-radius: 10px;
+}
+
+.h-75 table {
+  width: 100%;
+}
+
+#tr1 {
+  background-color: #03AAD2;
+}
+
+
+/* 奇数番目の色を指定 */
+#table1 tr:nth-child(2n+1) td {
+  background-color: #C2EEFF;
+}
+
+#table1 tr:nth-child(2n) td {
+  background-color: #fff;
+}
+
+.h-75 th {
+  color: #fff;
+}
+
 /* モーダル */
 .modal {
   display: none;
@@ -117,8 +155,117 @@ li {
 }
 
 /* 掲示板 */
-.sub_categories {
+
+.post_status {
+  margin-left: 550px;
+}
+
+.post_area a {
+  color: #494949;
+  font-weight: bold;
+}
+
+.post-btn {
+  background: #03AAD2;
+  border-radius: 5px;
+  text-align: center;
+  height: 35px;
+  padding: 5px 0;
+  margin-bottom: 10px;
+}
+
+.post-btn a {
+  color: #FFF;
+  font-size: 90%;
+}
+
+.search-btn {
+  letter-spacing: -0.5rem;
+  margin-bottom: 10px;
+}
+
+.search-btn input[type=text] {
+  display: inline-block;
+  border-width: thin;
+  width: 78%;
+  height: 35px;
+  background: #ECF1F6;
+  border: 1.5px solid #ccc;
+  border-radius: 5px 0 0 5px;
+}
+
+.search-btn input[type=submit] {
+  display: inline-block;
+  height: 35px;
+  vertical-align: top;
+  font-size: 90%;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  color: #fff;
+  width: 22%;
+  background: #03AAD2;
+}
+
+.likes_btn {
+  background: #e38eab;
+  font-size: 12px;
+  border-radius: 5px;
+  padding: 0 5px;
+  border: none;
+  color: #FFF;
+  width: 48%;
+  height: 35px;
+}
+
+.my_post_btn {
+  background: #DAA520;
+  font-size: 12px;
+  border-radius: 5px;
+  padding: 0 5px;
+  border: none;
+  color: #FFF;
+  width: 50%;
+  height: 35px;
+  margin-bottom: 10px;
+}
+
+/* カテゴリモーダル */
+.main_categories {
+  border-bottom: 1px solid;
+  position: relative;
+  cursor: pointer;
+}
+
+.main_categories::after {
+  border-right: solid 2px;
+  border-top: solid 2px;
+  content: "";
+  display: block;
+  height: 8px;
+  position: absolute;
+  right: 25px;
+  top: 38%;
+  transform: rotate(-45deg);
+  width: 8px;
+}
+
+.main_categories.open::after {
+  transform: rotate(-225deg);
+  position: absolute;
+  display: block;
+}
+
+
+.sub_categories input {
   display: none;
+  margin-left: 20px;
+  font-size: 0.8rem;
+  width: 80%;
+  text-align: left;
+  border: none;
+  border-bottom: 1px solid;
+  outline: none;
+  background: #ECF1F6;
 }
 
 .post_create_area {
@@ -237,7 +384,7 @@ li {
   border-radius: 5px;
   padding: 0 5px;
   border: none;
-  background: #999;
+  background: #03AAD2;
   color: #FFF;
 }
 

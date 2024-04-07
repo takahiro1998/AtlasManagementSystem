@@ -13,9 +13,10 @@
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 <body>
-  <form action="{{ route('loginPost') }}" method="POST">
+  <form action="{{ route('loginPost') }}" method="POST" style="background-color:#ECF1F6">
+    <img class="icon1" width="150" src="{{ asset ( 'image/atlas-black.png' ) }} ">
     <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center;">
-      <div class="border vh-50 w-25">
+      <div class="border vh-50 w-25" style="background:#fff;">
         <div class="w-75 m-auto pt-5">
           <label class="d-block m-0" style="font-size:13px;">メールアドレス</label>
           <div class="border-bottom border-primary w-100">
@@ -31,7 +32,7 @@
         <div class="text-right m-3">
           <input type="submit" class="btn btn-primary" value="ログイン">
         </div>
-        <div class="text-center">
+        <div class="text-center" style="padding-bottom:20px">
           <a href="{{ route('registerView') }}">新規登録</a>
         </div>
       </div>

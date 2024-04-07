@@ -5,8 +5,8 @@
   <div class="w-50 m-auto h-75">
     <p><span>{{ $date }}日</span><span class="ml-3">{{ $part }}部</span></p>
     <div class="h-75 border">
-      <table class="">
-        <tr class="text-center">
+      <table id="table1" class="">
+        <tr class="text-center" id="tr1">
           <th class="w-25">ID</th>
           <th class="w-25">名前</th>
           <th class="w-25">場所</th>
