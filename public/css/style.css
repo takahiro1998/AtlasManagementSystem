@@ -432,6 +432,10 @@ li {
   color: #999;
 }
 
+.one_person a span {
+  color: #03AAD2;
+}
+
 .search_conditions {
   width: 80%;
   border-bottom: 1px solid #ccc;
@@ -468,12 +472,40 @@ li {
 
 .subject_edit_btn {
   font-size: 12px;
-  color: #0000FF;
+  color: #03AAD2;
   cursor: pointer;
+}
+
+.subject_edit_btn::after {
+  border-right: solid 2px;
+  border-top: solid 2px;
+  content: "";
+  display: block;
+  height: 8px;
+  position: absolute;
+  right: 1000px;
+  top: 46.5%;
+  transform: rotate(-45deg);
+  width: 8px;
+}
+
+.subject_edit_btn.open::after {
+  top: 46%;
+  transform: rotate(-225deg);
+  position: absolute;
+  display: block;
 }
 
 .subject_inner {
   display: none;
+}
+
+.subject_inner form {
+  display: flex;
+}
+
+.subject_inner form div {
+  margin: 10px 5px 0 0;
 }
 
 .free_word {
@@ -523,3 +555,5 @@ li {
   font-size: 80%;
   width: 80%;
 }
+
+/* ユーザープロフィール */

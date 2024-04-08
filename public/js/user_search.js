@@ -5,6 +5,7 @@ $(function () {
   });
 
   $('.subject_edit_btn').click(function () {
+    $(this).toggleClass('open');
     $('.subject_inner').slideToggle();
   });
 });
