@@ -13,6 +13,10 @@
   position: relative;
 }
 
+.icon2 {
+  width: 20px;
+}
+
 /* body */
 .all_content {
   background: #ECF1F6;
@@ -25,6 +29,7 @@ li {
 
 /* サイドバー */
 .sidebar {
+  padding-top: 20px;
   width: 150px;
   height: 100vh;
   background-color: #03AAD2;
@@ -37,6 +42,7 @@ li {
 
 .sidebar p a {
   color: #FFF;
+  font-size: 85%;
 }
 
 /* トップページ */
