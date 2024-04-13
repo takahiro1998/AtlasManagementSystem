@@ -7,11 +7,11 @@
     <div class="post_area border w-75 m-auto p-3">
       <p><span>{{ $post->user->over_name }}</span><span class="ml-3">{{ $post->user->under_name }}</span>さん</p>
       <p><a href="{{ route('post.detail', ['id' => $post->id]) }}" style="">{{ $post->post_title }}</a></p>
-      <!-- サブカテゴリ追加 -->
+      <div class="post_bottom_area d-flex">
+        <!-- サブカテゴリ追加 -->
       @foreach($post->subCategories as $subcategory)
       <input type="submit" name="category_word" class="category_btn" value="{{ $subcategory->sub_category }}" form="postSearchRequest">
       @endforeach
-      <div class="post_bottom_area d-flex">
         <div class="d-flex post_status">
           <!-- コメント欄 -->
           <div class="mr-5">
@@ -32,7 +32,7 @@
     @endforeach
   </div>
   <div class="other_area border w-25">
-    <div class="border m-4">
+    <div class="m-4">
       <div class="post-btn"><a href="{{ route('post.input') }}">投稿</a></div>
       <!-- 投稿検索 -->
       <div class="search-btn">

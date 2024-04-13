@@ -58,7 +58,7 @@
     @endforeach
   </div>
   <!-- 検索欄 -->
-  <div class="search_area w-25 border" style="margin-top:60px;">
+  <div class="search_area w-25" style="margin-top:60px;">
     <div class="">
       <p style="font-size:1.2rem;color:#483D8B;">検索</p>
       <div>

@@ -4,7 +4,7 @@
 <div class="vh-100 d-flex" style="align-items:center; justify-content:center;">
   <div class="w-50 m-auto h-75">
     <p><span>{{ $date }}日</span><span class="ml-3">{{ $part }}部</span></p>
-    <div class="h-75 border">
+    <div class="h-75">
       <table id="table1" class="">
         <tr class="text-center" id="tr1">
           <th class="w-25">ID</th>

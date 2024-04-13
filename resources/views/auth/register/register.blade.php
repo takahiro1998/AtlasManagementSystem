@@ -46,10 +46,6 @@
             </div>
           </div>
           <div class="mt-3">
-            <label class="m-0 d-block" style="font-size:13px">メールアドレス</label>
-            <div class="border-bottom border-primary">
-              <input type="mail" class="w-100 border-0 mail_address" name="mail_address">
-            </div>
             @if ($errors->has('mail_address'))
             <div id="alert">
               <ol>
@@ -57,6 +53,10 @@
               </ol>
             </div>
             @endif
+            <label class="m-0 d-block" style="font-size:13px">メールアドレス</label>
+            <div class="border-bottom border-primary">
+              <input type="mail" class="w-100 border-0 mail_address" name="mail_address">
+            </div>
           </div>
         </div>
         <div class="mt-3">
@@ -68,6 +68,13 @@
           <label style="font-size:13px">その他</label>
         </div>
         <div class="mt-3">
+          @if ($errors->has('birth_day'))
+        <div id="alert">
+          <ol>
+            <li>{{ $errors->first('birth_day') }}</li>
+          </ol>
+        </div>
+        @endif
           <label class="d-block m-0 aa" style="font-size:13px">生年月日</label>
           <select class="old_year" name="old_year">
             <option value="none">-----</option>
@@ -151,13 +158,6 @@
           </select>
           <label style="font-size:13px">月</label>
         </div>
-        @if ($errors->has('birth_day'))
-        <div id="alert">
-          <ol>
-            <li>{{ $errors->first('birth_day') }}</li>
-          </ol>
-        </div>
-        @endif
         <div class="mt-3">
           <label class="d-block m-0" style="font-size:13px">役職</label>
           <input type="radio" name="role" class="admin_role role" value="1">
@@ -170,13 +170,13 @@
           <label style="font-size:13px" class="other_role">生徒</label>
         </div>
         <div class="select_teacher d-none">
-          <label class="d-block m-0" style="font-size:13px">選択科目</label>
           @foreach($subjects as $subject)
           <div class="">
             <input type="checkbox" name="subject[]" value="{{ $subject->id }}">
             <label>{{ $subject->subject }}</label>
           </div>
           @endforeach
+          <label class="d-block m-0" style="font-size:13px">選択科目</label>
         </div>
         <div class="mt-3">
           <label class="d-block m-0" style="font-size:13px">パスワード</label>
