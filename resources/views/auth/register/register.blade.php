@@ -14,9 +14,19 @@
 </head>
 <body>
   <form action="{{ route('registerPost') }}" method="POST">
-    <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center;">
-      <div class="w-25 vh-75 border p-3">
-        <div class="register_form">
+    <div class="w-100 vh-100 d-flex all_content" style="align-items:center; justify-content:center;">
+      <div class="w-25 vh-75 border p-3 shadow" style="background:#fff;">
+        <div class="register_form" >
+          <div class="mt-3">
+            @if ($errors->has('over_name'))
+             <span class="error_message">{{ $errors->first('over_name') }}</span>
+             @endif
+          </div>
+          <div class="mt-3">
+             @if ($errors->has('under_name'))
+             <span class="error_message">{{ $errors->first('under_name') }}</span>
+             @endif
+          </div>
           <div class="d-flex mt-3" style="justify-content:space-between">
             <div class="" style="width:140px">
               <label class="d-block m-0" style="font-size:13px">姓</label>
@@ -47,11 +57,7 @@
           </div>
           <div class="mt-3">
             @if ($errors->has('mail_address'))
-            <div id="alert">
-              <ol>
-                <li>{{ $errors->first('mail_address') }}</li>
-              </ol>
-            </div>
+            <span class="error_message">{{ $errors->first('mail_address') }}</span>
             @endif
             <label class="m-0 d-block" style="font-size:13px">メールアドレス</label>
             <div class="border-bottom border-primary">
@@ -69,12 +75,8 @@
         </div>
         <div class="mt-3">
           @if ($errors->has('birth_day'))
-        <div id="alert">
-          <ol>
-            <li>{{ $errors->first('birth_day') }}</li>
-          </ol>
-        </div>
-        @endif
+          <span class="error_message">{{ $errors->first('birth_day') }}</span>
+          @endif
           <label class="d-block m-0 aa" style="font-size:13px">生年月日</label>
           <select class="old_year" name="old_year">
             <option value="none">-----</option>
@@ -179,12 +181,18 @@
           <label class="d-block m-0" style="font-size:13px">選択科目</label>
         </div>
         <div class="mt-3">
+          @if ($errors->has('password'))
+          <span class="error_message">{{ $errors->first('password') }}</span>
+          @endif
           <label class="d-block m-0" style="font-size:13px">パスワード</label>
           <div class="border-bottom border-primary">
             <input type="password" class="border-0 w-100 password" name="password">
           </div>
         </div>
         <div class="mt-3">
+          @if ($errors->has('password_confirmation'))
+          <span class="error_message">{{ $errors->first('password_confirmation') }}</span>
+          @endif
           <label class="d-block m-0" style="font-size:13px">確認用パスワード</label>
           <div class="border-bottom border-primary">
             <input type="password" class="border-0 w-100 password_confirmation" name="password_confirmation">

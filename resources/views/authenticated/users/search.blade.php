@@ -5,7 +5,7 @@
 <div class="search_content w-100 border d-flex">
   <div class="reserve_users_area">
     @foreach($users as $user)
-    <div class="border one_person">
+    <div class="border one_person shadow">
       <div>
         <span>ID : </span>
         <span>{{ $user->id }}</span>

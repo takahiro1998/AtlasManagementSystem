@@ -18,6 +18,10 @@ body {
   background: #03AAD2;
 }
 
+.shadow {
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, .5);
+}
+
 /* Atalsアイコン */
 .icon1 {
   display: flex;
@@ -222,8 +226,14 @@ li {
 }
 
 .post-btn a {
+  display: block;
+  text-decoration: none;
   color: #FFF;
   font-size: 90%;
+}
+
+.post-btn a:hover {
+  color: #fff;
 }
 
 .search-btn {
@@ -294,12 +304,12 @@ li {
   position: absolute;
   right: 25px;
   top: 38%;
-  transform: rotate(-45deg);
+  transform: rotate(-225deg);
   width: 8px;
 }
 
 .main_categories.open::after {
-  transform: rotate(-225deg);
+  transform: rotate(-45deg);
   position: absolute;
   display: block;
 }
@@ -473,6 +483,7 @@ li {
   padding-left: 10px;
   background: #fff;
   font-weight: bold;
+  border-radius: 10px;
 }
 
 .one_person div span:first-child {
@@ -484,6 +495,7 @@ li {
 }
 
 .search_conditions {
+  position: relative;
   width: 80%;
   border-bottom: 1px solid #ccc;
 }
@@ -504,15 +516,15 @@ li {
   display: block;
   height: 8px;
   position: absolute;
-  right: 80px;
-  top: 52%;
-  transform: rotate(-45deg);
+  right: 42%;
+  top: 31%;
+  transform: rotate(-225deg);
   width: 8px;
 }
 
 .search_conditions.open::after {
-  top: 51%;
-  transform: rotate(-225deg);
+  top: 36%;
+  transform: rotate(-45deg);
   position: absolute;
   display: block;
 }
